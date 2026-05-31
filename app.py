@@ -6,5 +6,6 @@ app = Flask(__name__)
 def hello():
     return '<h1>Witaj MERITO!</h1><p>Autor: Bartosz Bryniarski</p>'
 
+
 if __name__ == '__main__':
     app.run(debug=True)
