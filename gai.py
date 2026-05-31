@@ -8,11 +8,15 @@ GEMINI_API_KEY = os.environ.get('GEMINI_API_KEY', 'brak zmiennej')
 
 client = genai.Client()
 
+history = []
+
 while True:
     prompt = input("Prompt: ")
+    history.append({"role": "user", "parts": [{"text": prompt}]})
     response = client.models.generate_content(
         model="gemini-3.5-flash",
-        contents=prompt
+        contents=history
     )
+    history.append({"role": "model", "parts": [{"text": response.text}]})
 
     print(f"GenAI: {response.text}")
