@@ -8,9 +8,11 @@ GEMINI_API_KEY = os.environ.get('GEMINI_API_KEY', 'brak zmiennej')
 
 client = genai.Client()
 
-response = client.models.generate_content(
-    model="gemini-3.5-flash",
-    contents="Cześć, co słychać?"
-)
+while True:
+    prompt = input("Prompt: ")
+    response = client.models.generate_content(
+        model="gemini-3.5-flash",
+        contents=prompt
+    )
 
-print(response.text)
+    print(f"GenAI: {response.text}")
